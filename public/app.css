@@ -529,14 +529,20 @@ body {
   margin: 0;
 }
 
+body > header {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: var(--block-spacing-vertical) var(--block-spacing-horizontal) 0 var(--block-spacing-horizontal);
+}
+
 body > nav,
-body > header,
 body > main,
 body > footer {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding: var(--block-spacing-vertical) var(--block-spacing-horizontal) 0 var(--block-spacing-horizontal);
+  padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
 }
 @media (min-width: 576px) {
   body > nav,
@@ -1115,12 +1121,6 @@ textarea::-webkit-input-placeholder,
 select:invalid {
   color: var(--form-element-placeholder-color);
   opacity: 1;
-}
-
-input:not([type=checkbox], [type=radio]),
-select,
-textarea {
-  margin-bottom: var(--spacing);
 }
 
 select::-ms-expand {
@@ -1727,7 +1727,7 @@ details[open] > summary::after {
  * Card (<article>)
  */
 article {
-  padding-bottom: 1.25rem;
+  padding-bottom: 1.5rem;
 }
 
 article p {
