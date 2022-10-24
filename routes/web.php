@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StreamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware(['throttle:global'])->get('/', [StreamController::class, 'index'])->name('stream.index');
+Route::middleware(['throttle:global'])->get('/{stream_uuid}', [StreamController::class, 'show'])->name('stream.show');
+Route::middleware(['throttle:store-stream'])->post('/stream', [StreamController::class, 'store']);
