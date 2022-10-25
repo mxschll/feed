@@ -1,4 +1,4 @@
-# 📰 The Feed Aggregator
+# 🗞️ The Feed Aggregator
 
 > No scripts, no ads, no tracking. No login required.
 
