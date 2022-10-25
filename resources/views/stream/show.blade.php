@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stream</title>
+    <title>The Feed Aggregator</title>
     <link rel="stylesheet" href="{{ asset('app.css') }}">
 </head>
 
 <body>
 
+    @include('components.stream.navigation')
+
     <header>
-        @include('components.stream.navigation')
         <x-stream.input :stream="$stream" />
     </header>
 

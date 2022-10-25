@@ -533,7 +533,7 @@ body > header {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding: var(--block-spacing-vertical) var(--block-spacing-horizontal) 0 var(--block-spacing-horizontal);
+  padding: 0 var(--block-spacing-horizontal);
 }
 
 body > nav,
