@@ -11,7 +11,7 @@
 <body>
 
     @include('components.stream.navigation')
-    
+
     <header>
         <hgroup>
             <h1>The Feed Agregator</h1>
@@ -29,8 +29,11 @@
 
             <h3>How does it work?</h3>
             <p>
-                Enter the URL of a RSS or Atom feed and you're good to go. You can add as many feeds as you want. The collection of multiple feeds is called stream. Here are some examples to start with:
+                Enter the URL of a RSS or Atom feed and you're good to go. You can add as many feeds as you want.
+                The collection of multiple feeds is called stream. Each stream has its own URL that you can share with others.
             </p>
+
+            <p>Here are some examples to start with:</p>
 
             <ul>
                 @foreach ($streams as $stream)
