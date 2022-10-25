@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" @if(request()->theme == "dark") data-theme="dark" @elseif (request()->theme == "light") data-theme="light" @endif>
 
 <head>
     <meta charset="utf-8">

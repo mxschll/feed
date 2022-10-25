@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" @if(request()->theme == "dark") data-theme="dark" @elseif (request()->theme == "light") data-theme="light" @endif>
 
 <head>
     <meta charset="utf-8">
@@ -24,7 +24,9 @@
         <section>
             <h3>What is this?</h3>
             <p>
-                This is a feed aggregator that doesn't use any scripts, ads, tracking, or login. It's just a simple aggregator that you can use to get an <i>overview</i> of your favorite blogs and news sites without any of the usual annoyances. It does not replace full fledged RSS readers.
+                This is a feed aggregator that doesn't use any scripts, ads, tracking, or login.
+                It's just a simple aggregator that you can use to get an <i>overview</i> of your favorite blogs and news sites without any of the usual annoyances.
+                It does not replace full fledged RSS readers.
             </p>
 
             <h3>How does it work?</h3>
@@ -40,6 +42,13 @@
                 <li><a href="/{{ $stream->uuid }}">{{ implode(', ', $stream->feeds()->pluck('title')->toArray()) }}</a></li>
                 @endforeach
             </ul>
+
+            <h3>Additional features</h3>
+            <p>
+                You can also add a <code>theme</code> parameter to the URL to change the theme of the page.
+                The following themes are available: <code><a href="?theme=light">light</a></code> and <code><a href="?theme=dark">dark</a></code>.
+            </p>
+
         </section>
     </main>
 
