@@ -1,7 +1,6 @@
 import:
   - recipe/laravel.php
   - contrib/php-fpm.php
-  - contrib/npm.php
 
 config:
   application: 'The Feed Aggregator'
@@ -22,8 +21,6 @@ tasks:
     - artisan:view:cache
     - artisan:config:cache
     - artisan:migrate
-    - npm:install
-    - npm:run:prod
     - deploy:publish
     - php-fpm:reload
 
