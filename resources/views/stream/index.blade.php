@@ -14,7 +14,7 @@
 
     <header>
         <hgroup>
-            <h1>The Feed Agregator</h1>
+            <h1>The Feed Aggregator</h1>
             <h2>No scripts, no ads, no tracking. No login required.</h2>
         </hgroup>
         <x-stream.input />
