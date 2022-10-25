@@ -12,6 +12,7 @@ class Feed extends Model
 
     protected $fillable = [
         'url',
+        'title',
         'domain'
     ];
 

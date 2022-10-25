@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Feed;
 use App\Models\Stream;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Libraries\Feed as FeedParser;
 
 class StreamController extends Controller
 {
@@ -44,9 +45,18 @@ class StreamController extends Controller
             'stream_uuid' => 'sometimes|exists:streams,uuid',
         ]);
 
+        // Check if url is valid RSS or Atom feed
+        $feed = new FeedParser($request->url);
+        try {
+            $feed->parse();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Invalid feed URL');
+        }
+
         $feed = Feed::firstOrNew([
-            'url' => $request->url,
-            'domain' => parse_url($request->url, PHP_URL_HOST),
+            'url' => $feed->url,
+            'title' => $feed->title,
+            'domain' => $feed->domain,
         ]);
         $feed->save();
 
@@ -90,7 +100,7 @@ class StreamController extends Controller
     {
         $stream = Stream::where('uuid', $stream_uuid)->firstOrFail();
         $feeds = $stream->feeds;
-        
+
         $items = [];
         foreach ($feeds as $feed) {
             $items = array_merge($items, $feed->getEntries());

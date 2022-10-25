@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('url')->unique();
             $table->string('domain');
-            $table->timestamp('fetched_at')->nullable();
+            $table->string('title');
             $table->unique(['url', 'domain']);
             $table->timestamps();
         });

@@ -10,7 +10,7 @@
 </form>
 @isset($stream)
 <small>
-    @foreach ($stream->feeds()->pluck('domain') as $domain)
+    @foreach ($stream->feeds()->pluck('title') as $domain)
     {{ $domain }} @if (!$loop->last) • @endif
     @endforeach
 </small>

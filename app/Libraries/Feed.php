@@ -26,6 +26,7 @@ class Entry
 class Feed
 {
     public string $url;
+    public string $title;
     public string $domain;
     public FeedTypes $type;
     public array $entries = [];
@@ -70,7 +71,7 @@ class Feed
             $this->type = FeedTypes::ATOM;
             $this->parseAtom();
         } else {
-            throw new Exception('Unknown feed type');
+            throw new Exception('Invalid feed URL');
         }
     }
 
@@ -96,7 +97,7 @@ class Feed
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_USERAGENT, 'FeedFetcher-Google'); // some feeds require a user agent
             curl_setopt($curl, CURLOPT_HEADER, false);
-            curl_setopt($curl, CURLOPT_TIMEOUT, 20);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 3);
             curl_setopt($curl, CURLOPT_ENCODING, '');
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); // no echo, just return result
             curl_setopt($curl, CURLOPT_USERAGENT, '');
@@ -112,6 +113,8 @@ class Feed
 
     public function parseRss()
     {
+        $this->title = (string) $this->xml->channel->title;
+
         foreach ($this->xml->channel->item as $item) {
             $entry = new Entry();
             $entry->url = (string) $item->link;
@@ -126,6 +129,8 @@ class Feed
 
     public function parseAtom()
     {
+        $this->title = (string) $this->xml->title;
+
         foreach ($this->xml->entry as $item) {
             $entry = new Entry();
             $entry->url = (string) $item->link['href'];

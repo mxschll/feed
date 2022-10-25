@@ -34,7 +34,7 @@
 
             <ul>
                 @foreach ($streams as $stream)
-                <li><a href="/{{ $stream->uuid }}">{{ implode(', ', $stream->feeds()->pluck('domain')->toArray()) }}</a></li>
+                <li><a href="/{{ $stream->uuid }}">{{ implode(', ', $stream->feeds()->pluck('title')->toArray()) }}</a></li>
                 @endforeach
             </ul>
         </section>
