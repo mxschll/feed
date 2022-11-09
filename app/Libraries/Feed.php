@@ -42,8 +42,14 @@ class Feed
         $this->converter = new HtmlConverter(array('strip_tags' => true));
     }
 
+    private function replaceHtmlHeadingsWithH6($text)
+    {
+        return preg_replace('/<h([1-6])>(.*?)<\/h[1-6]>/i', '<h6>$2</h6>', $text);
+    }
+
     private function htmlToMarkdown($html)
     {
+        $html = $this->replaceHtmlHeadingsWithH6($html);
         return $this->converter->convert(preg_replace('/<img(.*?)>/', '', $html));
     }
 
