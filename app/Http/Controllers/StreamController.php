@@ -17,8 +17,7 @@ class StreamController extends Controller
      */
     public function index()
     {
-        $streams = Stream::withCount('feeds')->having('feeds_count', '>', 2)->take(5)->get();
-        return view('stream.index', compact('streams'));
+        return view('stream.index');
     }
 
     /**

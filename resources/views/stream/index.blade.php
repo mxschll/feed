@@ -24,14 +24,6 @@
             The collection of multiple feeds is called stream. Each stream has its own URL that you can share with others.
         </p>
 
-        <p>Here are some examples to start with:</p>
-
-        <ul>
-            @foreach ($streams as $stream)
-            <li><a href="/{{ $stream->uuid }}">{{ implode(', ', $stream->feeds()->pluck('title')->toArray()) }}</a></li>
-            @endforeach
-        </ul>
-
         <h3>Additional features</h3>
         <p>
             You can also add a <code>theme</code> parameter to the URL to change the theme of the page.
